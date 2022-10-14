@@ -1430,6 +1430,14 @@ svg.arrow-rotate {
     .bar-v4 a {
         font-weight: 500;
     }
+    .grid-w4 .box .textarea-wrap textarea {
+        height: 80px;
+        padding: 5px;
+        font-size: 11px;
+        font-family: 'Roboto', sans-serif;
+        word-spacing: 0px;
+        font-weight: 400;
+    }
 }
 
 @media (min-width: 0px) and (max-width: 568px) {
