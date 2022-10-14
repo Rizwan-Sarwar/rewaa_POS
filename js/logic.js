@@ -1,4 +1,3 @@
-// SIDE BAR SCRIPT
 let layer = document.querySelector(".layer");
 let sidebar = document.querySelector(".sidebar");
 let closeBtn = document.getElementById("btn");
@@ -11,6 +10,7 @@ closeBtn.addEventListener("click", () => {
         layer.classList.toggle("layerFull");
     }
 });
+// SIDE BAR SCRIPT
 let menuBTN_Click = (ele) => {
     let menuBTN = ele;
     let SubMenu = menuBTN.nextElementSibling.nextElementSibling
@@ -117,16 +117,6 @@ let tableRowCollapsible = (ele) => {
             }
         }
     }
-
-    // let nextSibling = arrow.nextElementSibling;
-    // if (nextSibling.matches(".discount")) {
-    //     if (nextSibling.children[0].children[0].matches(".productDiscount_show")) {
-    //         nextSibling.children[0].children[0].classList.remove("productDiscount_show")
-    //     } else {
-    //         nextSibling.children[0].children[0].classList.add("productDiscount_show")
-    //     }
-    // }
-
 }
 
 // Input value check
@@ -140,11 +130,9 @@ let inputValueCheck = (inputElement) => {
         left: 33px;
         `;
     } else {
-        inputLabel.style.cssText = `
-        top: 15px;
-        left: 40px;
-        font-size: 16px;
-        `;
+        inputLabel.style.removeProperty('top');
+        inputLabel.style.removeProperty('left');
+        inputLabel.style.removeProperty('font-size');
     }
 }
 
@@ -153,12 +141,6 @@ document.querySelector(".home-section").addEventListener("click", () => {
     allMenuColapseWhenClickMenuBTN_sm()
 })
 
-// const mediaQuery = window.matchMedia('(max-width: 1024px)')
-// if (mediaQuery.matches) {
-//     debugger
-//     sidebar.classList.remove("open")
-//     closeBtn.style.display = "none"
-// }
 document.getElementById("btn2").addEventListener("click", toggleSideBar)
 
 function toggleSideBar() {
