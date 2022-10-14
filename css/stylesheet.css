@@ -1103,7 +1103,7 @@ input:checked+.slider:before {
         gap: 10px;
     }
     .profile-menu a {
-        padding: 5px;
+        padding: 5px 5px 2px 5px;
         font-size: 15px;
     }
     .user-name p {
@@ -1381,7 +1381,7 @@ input:checked+.slider:before {
         margin: 0px 0px 15px 0px;
     }
     .bar-v3 a {
-        padding: 3px 3px;
+        padding: 5px 5px;
         font-size: 12px;
         font-weight: 500;
     }
@@ -1389,6 +1389,9 @@ input:checked+.slider:before {
         margin: 0px 5px 0px 0px;
         width: 18px;
         height: 18px;
+    }
+    .bar-v3 .box:last-child a svg {
+        margin: 0px;
     }
     .sidebar.open .logo-details #btn {
         right: 0;
