@@ -969,6 +969,116 @@ svg.arrow-rotate {
 }
 
 
+/* =================== SWITCH ======================= */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "%";
+    height: 24px;
+    display: flex;
+    align-items: center;
+    width: 26px;
+    left: 5px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    justify-content: center;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(30px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 9px;
+}
+
+.slider.round:before {
+    border-radius: 7px;
+}
+
+.grid-w4 .box .right.rs_btn span.slider {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    min-width: 55px;
+    padding: 5px;
+    background-color: #e4e4e4;
+    font-size: 14px;
+    letter-spacing: -.2px;
+}
+
+.grid-w4 .box .right.rs_btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.grid-w4 .box .right.rs_btn .rs_switchBTN {
+    width: fit-content;
+}
+
+.grid-w4 .box .right.rs_btn .rs_value-wrap {
+    height: 28px;
+    width: 75px;
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 500;
+    color: dimgray;
+}
+
+.grid-w4 .box .right.rs_btn input:checked+span.slider {
+    background-color: #00b3b1;
+    box-shadow: 0 0 1px #00b3b1;
+}
+
+
+/* ====================== SWITCH END ======================= */
+
+
 /* media query */
 
 @media (min-width: 0px) and (max-width: 1600px) {
@@ -1213,6 +1323,7 @@ svg.arrow-rotate {
     .grid-w4 .box {
         padding: 7px 0px 10px;
         margin: 0px 0px 5px;
+        align-items: center;
     }
     .grid-w4 .box .textarea-wrap textarea {
         height: 80px;
@@ -1361,6 +1472,9 @@ svg.arrow-rotate {
         padding: 5px 10px 5px 45px;
         height: 30px;
         margin: auto;
+    }
+    .grid-w4 .box .right.rs_btn .rs_value-wrap {
+        width: 60px;
     }
 }
 
