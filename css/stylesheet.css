@@ -804,6 +804,7 @@ tr.discount .box .product-discount p {
     transition: .3s ease-in-out;
     font-size: 17px;
     font-weight: 600;
+    resize: none;
 }
 
 .grid-w4 .box .textarea-wrap textarea:focus {
@@ -1290,6 +1291,9 @@ svg.arrow-rotate {
 }
 
 @media (min-width: 0px) and (max-width: 1024px) {
+    .bar-v4 {
+        margin: 0px 0px 0px 0px;
+    }
     .grid-w4 .box .right p.pera-bold span {
         font-size: 10px;
     }
