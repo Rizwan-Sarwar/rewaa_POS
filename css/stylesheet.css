@@ -815,9 +815,9 @@ tr.discount .box .product-discount p {
 
 .bar-v4 {
     background-color: white;
-    padding: 15px 26px;
+    padding: 15px;
     border-radius: 3px;
-    margin: 0px 0px 0px 10px;
+    margin: 20px 0px 0px 10px;
 }
 
 .bar-v4 a {
@@ -1063,10 +1063,11 @@ svg.arrow-rotate {
         font-weight: 600;
     }
     .bar-v4 {
-        padding: 0px 10px 10px;
+        padding: 10px;
+        margin: 15px 0px 0px 10px;
     }
     .bar-v4 a {
-        padding: 10px 10px;
+        padding: 15px 10px;
         font-size: 15px;
         font-weight: 600;
     }
@@ -1292,14 +1293,11 @@ svg.arrow-rotate {
         margin: 0px 0px 0px 0px;
     }
     .bar-v4 {
-        margin: 0px 0px 0px 0px;
+        margin: 15px 0px 0px 0px;
     }
 }
 
 @media (min-width: 0px) and (max-width: 1024px) {
-    .bar-v4 {
-        margin: 0px 0px 0px 0px;
-    }
     .grid-w4 .box .right p.pera-bold span {
         font-size: 10px;
     }
@@ -1433,8 +1431,12 @@ svg.arrow-rotate {
         font-size: 12px;
         font-weight: 600;
     }
+    .bar-v4 {
+        margin: 20px 0px 10px 0px;
+    }
     .bar-v4 a {
         font-weight: 500;
+        padding: 15px 10px;
     }
     .grid-w4 .box .textarea-wrap textarea {
         height: 80px;
