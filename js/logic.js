@@ -92,47 +92,55 @@ let allMenuColapseWhenClickSidebarIcon = () => {
 let tableRowCollapsible = (ele) => {
     if (ele.matches(".delete-btn")) {
         let trash = ele;
-        trash.parentElement.parentElement.style.display = "none";
-        trash.parentElement.parentElement.nextElementSibling.style.display = "none";
+        if(trash.parentElement.parentElement.parentElement.matches(".row-colapse")){
+            trash.parentElement.parentElement.parentElement.style.display = "none";
+        }
     } else if (ele.matches(".arrow-icon")) {
         let arrow = ele;
         let nextSibling = arrow.parentElement.parentElement.nextElementSibling
         if (arrow.matches(".arrow-rotate")) {
             arrow.classList.remove("arrow-rotate");
-            if (nextSibling.matches(".discount")) {
-                if (nextSibling.children[0].children[0].matches(".productDiscount_show")) {
-                    nextSibling.children[0].children[0].classList.remove("productDiscount_show")
-                } else {
-                    nextSibling.children[0].children[0].classList.add("productDiscount_show")
-                }
+            if (nextSibling.matches(".rs_colapsebar")) {
+                nextSibling.classList.toggle("rs_hidebar");
             }
         } else {
             arrow.classList.add("arrow-rotate");
-            if (nextSibling.matches(".discount")) {
-                if (nextSibling.children[0].children[0].matches(".productDiscount_show")) {
-                    nextSibling.children[0].children[0].classList.remove("productDiscount_show")
-                } else {
-                    nextSibling.children[0].children[0].classList.add("productDiscount_show")
-                }
+            if (nextSibling.matches(".rs_colapsebar")) {
+                nextSibling.classList.toggle("rs_hidebar");
             }
         }
     }
 }
 
-// Input value check
+// Input label animate
 let inputValueCheck = (inputElement) => {
     let inputValue = inputElement.value;
     let inputLabel = document.getElementById("search-product-label");
     if (!inputValue.length == 0) {
-        inputLabel.style.cssText = `
-        top: -10px;
-        font-size: 14px;
-        left: 33px;
-        `;
+        inputLabel.classList.add("labelAnim-active");
+        function filter() {
+            var search_Value = inputValue.toUpperCase();
+            var list = document.getElementsByClassName("rs_product-list")[0].children;
+            var local_list;
+            for (var i = 0; i < list.length; i++) {
+                local_list = list[i].innerText.toUpperCase();
+                if (local_list.indexOf(search_Value) > -1) {
+                    list[i].style.display = "block";
+                } else {
+                    list[i].style.display = "none";
+                }
+            }
+        }
+        filter()
     } else {
-        inputLabel.style.removeProperty('top');
-        inputLabel.style.removeProperty('left');
-        inputLabel.style.removeProperty('font-size');
+        inputLabel.classList.remove("labelAnim-active");
+        function filter() {
+            var list = document.getElementsByClassName("rs_product-list")[0].children;
+            for (var i = 0; i < list.length; i++) {
+                list[i].style.display = "block";
+            }
+        }
+        filter()
     }
 }
 
@@ -155,4 +163,46 @@ function screenSizeCheck() {
     } else {
         sidebar.classList.remove("open");
     }
+}
+function NewRow(ele){
+    let randomNumbers = new Array;
+    for(var i = 0; i < 2; i++){
+        let random = Math.floor(Math.random() * 100) + 1;
+        randomNumbers.push(random)
+    }
+    rs_productImage = ele.children[0].children[0]
+    rs_productImage_src = rs_productImage.src
+    rs_productName = ele.children[1].children[0].innerHTML
+    let rowColapse = document.createElement('div')
+    rowColapse.className = "row-colapse";
+    rowColapse.innerHTML = 
+    `
+        <div class="gridv8-ver">
+            <div class="trash td"><a href="##" class="delete-btn" onclick="tableRowCollapsible(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a></div>
+            <div class="product-name td"><input type="text" readonly value="${rs_productName}"></div>
+            <div class="price td"><input type="text" readonly value="${randomNumbers[0]}"></div>
+            <div class="quantity td"><input type="text" readonly value="1"></div>
+            <div class="total-price td"><input type="text" readonly value="${randomNumbers[0] + '.00'}"></div>
+            <div class="arrorBTN td"><a href="##" class="arrow-icon" onclick="tableRowCollapsible(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg></a></div>
+        </div>
+        <div class="rs_colapsebar rs_hidebar">
+            <div class="product-discount">
+                <div class="product-image">
+                    <img src="${rs_productImage_src}" alt="img">
+                </div>
+                <div class="product-SKU">
+                    <p class="bold">SKU</p>
+                    <p class="sku-code">${randomNumbers[1]}</p>
+                </div>
+                <div class="product-Tax">
+                    <p class="bold">Tax</p>
+                    <p class="tax-amount">1.30</p>
+                </div>
+                <div class="product-discount-percent">
+                    <input type="text" value="Discount%" readonly>
+                </div>
+            </div>
+        </div>`
+    let wrapper = document.getElementById("rs_addRows").appendChild(rowColapse);
+    document.getElementById("search-product").value = "";
 }
