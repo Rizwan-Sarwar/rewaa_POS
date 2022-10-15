@@ -32,7 +32,9 @@ body {
     margin: 0px;
     padding: 0px;
 }
-
+input {
+    outline: none;
+}
 * {
     margin: 0;
     padding: 0;
