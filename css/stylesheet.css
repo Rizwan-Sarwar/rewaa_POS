@@ -1201,6 +1201,7 @@ ul.rs_product-list a img {
     text-shadow: 0 0 black;
     font-family: 'Roboto',sans-serif;
     color: #29302e;
+    width: 100%;
 }
 .rs_DOM_rows-add .row-colapse .gridv8-ver .td a {
     display: inline-block;
