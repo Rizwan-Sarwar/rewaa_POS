@@ -1801,13 +1801,13 @@ div#rs_addRows {
         left: 6px;
     }
     .type-product .input-wrap input {
-        height: 35px;
+        height: 40px;
     }
     .type-product .icon {
         height: 18px;
     }
     .type-product .input-wrap label {
-        top: 9px;
+        top: 13px;
         left: 35px;
         font-size: 13px;
     }
@@ -1945,8 +1945,8 @@ div#rs_addRows {
         font-weight: 400;
     }
     ul.rs_product-list a img {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
     .gridv8-ver.rs_thead .th {
         white-space: nowrap;
