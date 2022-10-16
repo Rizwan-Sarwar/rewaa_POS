@@ -92,7 +92,7 @@ let allMenuColapseWhenClickSidebarIcon = () => {
 let tableRowCollapsible = (ele) => {
     if (ele.matches(".delete-btn")) {
         let trash = ele;
-        if(trash.parentElement.parentElement.parentElement.matches(".row-colapse")){
+        if (trash.parentElement.parentElement.parentElement.matches(".row-colapse")) {
             trash.parentElement.parentElement.parentElement.style.display = "none";
         }
     } else if (ele.matches(".arrow-icon")) {
@@ -118,6 +118,7 @@ let inputValueCheck = (inputElement) => {
     let inputLabel = document.getElementById("search-product-label");
     if (!inputValue.length == 0) {
         inputLabel.classList.add("labelAnim-active");
+
         function filter() {
             var search_Value = inputValue.toUpperCase();
             var list = document.getElementsByClassName("rs_product-list")[0].children;
@@ -134,6 +135,7 @@ let inputValueCheck = (inputElement) => {
         filter()
     } else {
         inputLabel.classList.remove("labelAnim-active");
+
         function filter() {
             var list = document.getElementsByClassName("rs_product-list")[0].children;
             for (var i = 0; i < list.length; i++) {
@@ -164,9 +166,10 @@ function screenSizeCheck() {
         sidebar.classList.remove("open");
     }
 }
-function NewRow(ele){
+
+function NewRow(ele) {
     let randomNumbers = new Array;
-    for(var i = 0; i < 2; i++){
+    for (var i = 0; i < 2; i++) {
         let random = Math.floor(Math.random() * 100) + 1;
         randomNumbers.push(random)
     }
@@ -175,8 +178,8 @@ function NewRow(ele){
     rs_productName = ele.children[1].children[0].innerHTML
     let rowColapse = document.createElement('div')
     rowColapse.className = "row-colapse";
-    rowColapse.innerHTML = 
-    `
+    rowColapse.innerHTML =
+        `
         <div class="gridv8-ver">
             <div class="trash td"><a href="##" class="delete-btn" onclick="tableRowCollapsible(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a></div>
             <div class="product-name td"><input type="text" readonly value="${rs_productName}"></div>
@@ -203,6 +206,15 @@ function NewRow(ele){
                 </div>
             </div>
         </div>`
-    let wrapper = document.getElementById("rs_addRows").appendChild(rowColapse);
+    document.getElementById("rs_addRows").appendChild(rowColapse);
     document.getElementById("search-product").value = "";
+    document.getElementById("search-product-label").classList.remove("labelAnim-active");
+    setTimeout(AllProductsShow, 500)
+}
+
+function AllProductsShow() {
+    let list = document.getElementsByClassName("rs_product-list")[0].children;
+    for (var i = 0; i < list.length; i++) {
+        list[i].style.display = "block";
+    }
 }
